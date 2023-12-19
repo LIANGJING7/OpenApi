@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.project.mapper.InterfaceInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.jing.project.jingcommon.model.entity.InterfaceInfo">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="requestHeader" column="requestHeader" jdbcType="VARCHAR"/>
+        <result property="responseHeader" column="responseHeader" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="userId" column="userId" jdbcType="BIGINT"/>
+        <result property="method" column="method" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="isDeleted" jdbcType="TINYINT"/>
+        <result property="params" column="params" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,description,
+        url,requestHeader,responseHeader,
+        status,userId,method,
+        createTime,updateTime,isDeleted,params
+    </sql>
+    <select id="getInterfaceInfoByCondition" resultType="com.jing.project.jingcommon.model.entity.InterfaceInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from interface_info
+        <where>
+            <if test="interfaceInfo.name != '' ">
+                AND name like concat('%',#{interfaceInfo.name},'%')
+            </if>
+            <if test="interfaceInfo.description != '' ">
+                AND description like concat('%',#{interfaceInfo.description},'%')
+            </if>
+            <if test="interfaceInfo.method != ''">
+                AND method like concat('%',#{interfaceInfo.method},'%')
+            </if>
+
+        </where>
+    </select>
+    <select id="getPersonInterfaceInfo"
+            resultType="com.jing.project.model.dto.interfaceinfo.PersonInterfaceInfoDataRequest">
+        select t1.totalNum,t1.leftNum,t2.status,t2.name,t2.description,t2.url,t2.method
+        from user_interface_info as t1
+        left join interface_info as t2
+         on t1.interfaceInfoId = t2.id where t1.userId = #{userId}
+    </select>
+</mapper>
