@@ -5,7 +5,7 @@ import com.jing.project.jingcommon.model.entity.User;
 
 
 /**
- * @Entity com.yupi.project.model.domain.User
+ * @Entity com.jing.project.model.domain.User
  */
 public interface UserMapper extends BaseMapper<User> {
 
