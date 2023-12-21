@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * 帖子接口
  *
- * @author yupi
+ * @author jing
  */
 @RestController
 @RequestMapping("/userInterfaceInfo")
