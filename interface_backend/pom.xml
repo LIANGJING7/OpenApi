@@ -9,7 +9,7 @@
         <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.yupi</groupId>
+    <groupId>com.jing</groupId>
     <artifactId>interface-backend</artifactId>
     <version>1.0</version>
     <name>interface-backend</name>
