@@ -3,7 +3,7 @@ package com.jing.project.constant;
 /**
  * 用户常量
  *
- * @author yupi
+ * @author jing
  */
 public interface UserConstant {
 
