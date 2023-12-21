@@ -3,7 +3,7 @@ package com.jing.project.constant;
 /**
  * 通用常量
  *
- * @author yupi
+ * @author jing
  */
 public interface CommonConstant {
 
