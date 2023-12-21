@@ -5,7 +5,7 @@ import com.jing.project.jingcommon.common.ErrorCode;
 /**
  * 自定义异常类
  *
- * @author yupi
+ * @author jing
  */
 public class BusinessException extends RuntimeException {
 
