@@ -1,0 +1,45 @@
+server:
+  port: 8090
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api_route
+          uri: http://localhost:8123
+          predicates:
+              - Path=/api/**
+          filters:
+              - AddRequestHeader=jing, jinggateway
+#              熔断机制
+#              - name: CircuitBreaker
+#                args:
+#                  name: myCircuitBreaker
+#                  fallbackUri: forward:/forback
+#        - id: query_route
+#          uri: http://localhost:8080/#/doucmentIndex
+#          predicates:
+#              - Path=/forback
+
+
+dubbo:
+  application:
+     name: dubbo-springboot-consumer-provider
+     qosEnable: true
+     qosPort: 33333
+     qosAcceptForeignIp: false
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    id: nacos-consumer
+    address: nacos://localhost:8848
+
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: trace
+
+
